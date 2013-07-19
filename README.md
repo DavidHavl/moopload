@@ -1,7 +1,7 @@
 moopload
 ========
 
-Mootools ajax upload script
+Mootools ajax file upload script
 
 Script that enables file uploading via ajax (on modern browsers).
 Using Mootools 1.4.*
