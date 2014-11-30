@@ -29,6 +29,9 @@ Moopload = new Class({
         this.formData = new FormData();
         this.setOptions(options);
         this.headers = this.options.headers;
+        if (typeof this.options.url != 'undefined') {
+            this.options.originalUrl = this.options.url;
+        }
         // check if it has data in options, then add it
         if(this.options.data) {
             this.addData(this.options.data);
@@ -56,7 +59,15 @@ Moopload = new Class({
             self.options.url += encodeURIComponent(key) + '=' + encodeURIComponent(value);
         });
     },
-
+    
+    /**
+     * Clear extra textual data send as part of the url. Basically resets the url back to the original/initial value
+     */
+    clearData: function(){
+        if(typeof this.options.originalUrl != 'undefined') {
+            this.options.url = this.options.originalUrl;
+        }
+    },
     /**
      * add multiple file input fields
      * Please note, inputs needs to have a values (file selected) before adding via this method
